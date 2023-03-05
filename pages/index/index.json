@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "searchBar":"/components/searchBar/searchBar"
+  },
+  "navigationBarTitleText": "校园二手交易首页"
+}

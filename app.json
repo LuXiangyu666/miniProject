@@ -1,0 +1,57 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/category/index",
+    "pages/publish/index",
+    "pages/cart/index",
+    "pages/my/index",
+    "pages/search/index",
+    "pages/product_detail/index"
+  ],
+  "requiredPrivateInfos":[
+    "chooseAddress"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#ff5700",
+    "navigationBarTitleText": "二手交易平台",
+    "navigationBarTextStyle":"white"
+  },
+  "tabBar": {
+    "backgroundColor": "#fafafa",
+    "list": [
+      {
+      "pagePath": "pages/index/index",
+      "text": "首页",
+      "iconPath": "icons/主页.png",
+      "selectedIconPath": "icons/主页2.png"
+    },
+    {
+      "pagePath": "pages/category/index",
+      "text": "分类",
+      "iconPath": "icons/分类.png",
+      "selectedIconPath": "icons/分类2.png"
+    },
+    {
+      "pagePath": "pages/publish/index",
+      "text": "发布",
+      "iconPath": "icons/发布.png",
+      "selectedIconPath": "icons/发布2.png"
+    },
+    {
+      "pagePath": "pages/cart/index",
+      "text": "购物车",
+      "iconPath": "icons/购物车.png",
+      "selectedIconPath": "icons/购物车2.png"
+    },
+    {
+      "pagePath": "pages/my/index",
+      "text": "个人中心",
+      "iconPath": "icons/个人中心.png",
+      "selectedIconPath": "icons/个人中心2.png"
+    }
+  ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,58 @@
+<!-- 顶部按键开始 -->
+<view class="topButton">
+  <view class="cancel">
+    <view>清空</view>
+  </view>
+  <view class="draft">
+    <view>存草稿</view>
+  </view>
+  <view class="publish">
+    <view>发布</view>
+  </view>
+</view>
+<!-- 顶部按键结束 -->
+
+<!-- 商品描述开始 -->
+<view class="describe">
+  <textarea placeholder="买家都关心商品型号，入手渠道，转手原因···" placeholder-class="placeholder" auto-focus maxlength="200" />
+</view>
+<!-- 商品描述结束 -->
+
+<!-- 上传图片开始 -->
+<view bindtap="formSubmit">上传图片</view>
+<view class="upload_img" bindtap="chooseImg">
+  <block wx:for="{{img_arr}}">
+    <view class='upload_img'>
+      <image src='{{item}}'></image>
+    </view>
+  </block>
+</view>
+<!-- 上传图片结束 -->
+
+<!-- 定位开始 -->
+<view class="location_container">
+  <view class="logo iconfont icon-dizhidingweiweizhi"></view>
+  <view class="location">北京市朝阳区北四环东路北京联合大学北四环校区</view>
+</view>
+<!-- 定位结束 -->
+
+<!-- 价格、交易方式选择开始 -->
+<view class="bottom">
+  <view class="price">
+    <view class="logo iconfont icon-jiage" style="font-size: 40rpx;"></view>
+    <view class="price_text">价格</view>
+    <view class="price_input">
+      <input class="input" auto-focus placeholder="请输入价格" placeholder-class="placeholder" bindinput="priceBind" />
+      <view class="RAM">¥</view>
+    </view>
+  </view>
+  <view class="trading_mode" bindtap="handleChooseMode">
+    <view class="logo iconfont icon-cangpeitubiao_fahuohuanhuofahuo" style="font-size: 40rpx;"></view>
+    <view class="mode_text">交易方式</view>
+    <view class="mode_choose">
+      <view class="arrowhead">></view>
+      <view class="mode">{{chooseMode}}</view>
+    </view>
+  </view>
+</view>
+<!-- 价格、交易方式选择结束 -->

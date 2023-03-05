@@ -1,0 +1,19 @@
+/* 全局引入iconfront样式 */
+@import "styles/iconfont.wxss";
+
+/* 初始化全局样式 */
+page,view,text,swiper,swiper-item,image,navigator{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* 全局变量  设置主题颜色、字体等 */
+page{
+  --themeColor:#ff5700;
+  font-size: 28rpx;
+}
+
+image{
+  width: 100%;
+}
