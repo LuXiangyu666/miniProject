@@ -14,6 +14,10 @@ Page({
     baseUrl: '',
     img_arr: [],
     formdata: '',
+    name: '请选择您的位置',
+    address: '',
+    latitude: '',
+    longitude: '',
     price: '',
     chooseMode: '',
   },
@@ -40,7 +44,7 @@ Page({
       return
     }
     wx.uploadFile({
-      url: 'http://10.12.57.113:8080/upload/picture', //自己的Java后台接口地址
+      url: 'http://192.168.16.122:8080/upload/picture', //自己的Java后台接口地址
       filePath: that.data.img_arr[index],
       name: 'content',
       header: {
@@ -84,6 +88,29 @@ Page({
         duration: 3000
       });
     }
+  },
+
+  //获取定位
+  getLocation: function () {
+    var _this = this;
+    wx.chooseLocation({
+      success: function (res) {
+        var name = res.name
+        var address = res.address
+        var latitude = res.latitude
+        var longitude = res.longitude
+        _this.setData({
+          name: name,
+          address: address,
+          latitude: latitude,
+          longitude: longitude
+        })
+      },
+      complete(r){
+        console.log(r)
+        console.log(222)
+      }
+    })
   },
 
   priceBind: function (e) {

@@ -9,7 +9,8 @@
     "pages/product_detail/index"
   ],
   "requiredPrivateInfos":[
-    "chooseAddress"
+    "chooseAddress",
+    "chooseLocation"
   ],
   "window":{
     "backgroundTextStyle":"light",

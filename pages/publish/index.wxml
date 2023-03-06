@@ -30,9 +30,9 @@
 <!-- 上传图片结束 -->
 
 <!-- 定位开始 -->
-<view class="location_container">
+<view class="location_container" bindtap='getLocation'>
   <view class="logo iconfont icon-dizhidingweiweizhi"></view>
-  <view class="location">北京市朝阳区北四环东路北京联合大学北四环校区</view>
+  <view class="location">{{name}}</view>
 </view>
 <!-- 定位结束 -->
 

@@ -54,7 +54,7 @@
 .location_container {
   margin: 50rpx 20rpx;
   background-color: #f5f5f5;
-  width: 500rpx;
+  width: 350rpx;
   height: 80rpx;
   font-size: 28rpx;
   text-overflow: ellipsis;
