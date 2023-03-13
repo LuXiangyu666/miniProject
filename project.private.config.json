@@ -5,7 +5,7 @@
     "compileHotReLoad": true,
     "urlCheck": false
   },
-  "libVersion": "2.30.0",
+  "libVersion": "2.30.2",
   "condition": {
     "miniprogram": {
       "list": [
@@ -33,6 +33,13 @@
         {
           "name": "发布页面",
           "pathName": "pages/publish/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "确认订单",
+          "pathName": "pages/pay/index",
           "query": "",
           "launchMode": "default",
           "scene": null

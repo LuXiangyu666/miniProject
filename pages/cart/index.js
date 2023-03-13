@@ -96,6 +96,28 @@ Page({
     }
   },
 
+  //点击结算
+  handlePay(){
+    const {totalNum,address} = this.data;
+    if(!address){
+      wx.showToast({
+        title: '请先选择收货地址！',
+        icon:'none',
+      })
+      return;
+    }
+    if(!totalNum){
+      wx.showToast({
+        title: '请先选择要下单的商品及数量！',
+        icon:'none',
+      })
+      return;
+    }
+    wx.navigateTo({
+      url: '../pay/index',
+    })
+  },
+
   //重新计算购物车页面底部工具栏的各项数据
   setCart(cart){
     let allChecked = true;

@@ -19,14 +19,13 @@
 <!-- 商品描述结束 -->
 
 <!-- 上传图片开始 -->
-<view bindtap="formSubmit">上传图片</view>
-<view class="upload_img" bindtap="chooseImg">
-  <block wx:for="{{img_arr}}">
-    <view class='upload_img'>
-      <image src='{{item}}'></image>
-    </view>
-  </block>
-</view>
+<button class="btn" bindtap="formSubmit">上传发布</button>
+<button class="btn" bindtap="upimg">选择图片</button>
+<block wx:for="{{img_arr}}">
+  <view class="logoinfo">
+    <image src = "{{item}}"></image>
+  </view>
+</block>
 <!-- 上传图片结束 -->
 
 <!-- 定位开始 -->

@@ -44,7 +44,7 @@ Page({
       return
     }
     wx.uploadFile({
-      url: 'http://192.168.16.122:8080/upload/picture', //自己的Java后台接口地址
+      url: 'http://10.12.57.113:8080/upload/picture', //自己的Java后台接口地址
       filePath: that.data.img_arr[index],
       name: 'content',
       header: {
@@ -66,9 +66,8 @@ Page({
       }
     })
   },
-
-  //选择图片
-  chooseImg() {
+  //选择要上传的图片
+  upimg: function () {
     var that = this;
     //这里小程序规定最好只能选9张，我这里随便填的3，你也可以自己改
     if (this.data.img_arr.length < 3) {
@@ -106,7 +105,7 @@ Page({
           longitude: longitude
         })
       },
-      complete(r){
+      complete(r) {
         console.log(r)
         console.log(222)
       }
