@@ -46,10 +46,15 @@ export const getWxLogin = () => {
 //后端请求工具类
 export const requestUtil = (params) => {
 
+  //判断url中是否带有/my/ 请求的是私有路径  带上header token
+  let header = {...params.header};
+  if(params.url.includes("/my/")){
+    //拼接header 带上token
+    header["token"] = wx.getStorageSync('token');
+  }
+
   var start = new Date().getTime();
   console.log(start);
-
-
   ajaxTimes++; //每次请求时，ajaxTimes加一
   wx.showLoading({
     title: '加载中',
@@ -64,6 +69,7 @@ export const requestUtil = (params) => {
   return new Promise((resolve, reject) => {
     wx.request({
       ...params,
+      header,
       url: baseUrl + params.url,
       success: (result) => {
         resolve(result.data)

@@ -105,6 +105,8 @@ Page({
       })
     }else{
       console.log("token存在："+ token);
+      console.log("支付继续，创建订单");
+      this.createOrder();
     }
 
 
@@ -124,7 +126,33 @@ Page({
       wx.setStorageSync('token', token);
       //继续创建订单
       console.log("支付继续，创建订单");
+      this.createOrder();
     }
+  },
+
+  //创建订单
+  async createOrder(){
+    const totalPrice=this.data.totalPrice;
+    const address=this.data.address.provinceName+this.data.address.cityName+this.data.address.countyName+this.data.address.detailInfo;
+    const consignee=this.data.address.userName;
+    const telNumber=this.data.address.telNumber;
+    let goods=[];
+    this.data.cart.forEach(v=>goods.push({
+      goodsId:v.id,
+      goodsNumber:v.num,
+      goodsPrice:v.price,
+      goodsName:v.name,
+      goodsPic:v.proPic
+    }))
+    const orderParam={
+      totalPrice,
+      address,
+      consignee,
+      telNumber,
+      goods
+    }
+    const res=await requestUtil({url:"/my/order/create",method:"POST",data:orderParam});
+    console.log("orderNo="+res.orderNo);
   },
 
   /**
