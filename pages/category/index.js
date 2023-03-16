@@ -48,6 +48,7 @@ Page({
       leftMenuList,
       rightContext
     })
+    wx.setStorageSync('bigType', leftMenuList)
   },
 
 

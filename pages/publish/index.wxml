@@ -7,44 +7,51 @@
     <view>存草稿</view>
   </view>
   <view class="publish">
-    <view>发布</view>
+    <view bindtap="handleCreateProduct">发布</view>
   </view>
 </view>
 <!-- 顶部按键结束 -->
 
-<!-- 商品描述开始 -->
-<view class="describe">
-  <textarea placeholder="买家都关心商品型号，入手渠道，转手原因···" placeholder-class="placeholder" auto-focus maxlength="200" />
-</view>
-<!-- 商品描述结束 -->
-
-<!-- 上传图片开始 -->
-<button class="btn" bindtap="formSubmit">上传发布</button>
-<button class="btn" bindtap="upimg">选择图片</button>
-<block wx:for="{{img_arr}}">
-  <view class="logoinfo">
-    <image src = "{{item}}"></image>
-  </view>
-</block>
-<!-- 上传图片结束 -->
-
-<!-- 定位开始 -->
-<view class="location_container" bindtap='getLocation'>
-  <view class="logo iconfont icon-dizhidingweiweizhi"></view>
-  <view class="location">{{name}}</view>
-</view>
-<!-- 定位结束 -->
-
 <!-- 价格、交易方式选择开始 -->
+
 <view class="bottom">
+<!-- 商品名称 -->
+<view class="price">
+    <view class="logo iconfont icon-cangkukucun" style="font-size: 40rpx;"></view>
+    <view class="price_text">商品名称</view>
+    <view class="price_input">
+      <input class="input" auto-focus placeholder="请输入名称" placeholder-class="placeholder" bindinput="productNameBind" />
+      <view class="RAM"></view>
+    </view>
+  </view>
+  <!-- 商品价格 -->
   <view class="price">
     <view class="logo iconfont icon-jiage" style="font-size: 40rpx;"></view>
     <view class="price_text">价格</view>
     <view class="price_input">
-      <input class="input" auto-focus placeholder="请输入价格" placeholder-class="placeholder" bindinput="priceBind" />
+      <input class="input input_color" auto-focus placeholder="请输入价格" placeholder-class="placeholder" bindinput="priceBind" />
       <view class="RAM">¥</view>
     </view>
   </view>
+  <!-- 商品库存 -->
+  <view class="price">
+    <view class="logo iconfont icon-cangkukucun" style="font-size: 40rpx;"></view>
+    <view class="price_text">数量</view>
+    <view class="price_input">
+      <input class="input" auto-focus placeholder="请输入库存" placeholder-class="placeholder" bindinput="stockBind" />
+      <view class="RAM"></view>
+    </view>
+  </view>
+  <!-- 商品分类 -->
+  <view class="trading_mode" bindtap="handleChooseCategory">
+    <view class="logo iconfont icon-fenlei" style="font-size: 40rpx;"></view>
+    <view class="mode_text">商品类别</view>
+    <view class="mode_choose">
+      <view class="arrowhead">></view>
+      <view class="mode">{{chooseCategory}}</view>
+    </view>
+  </view>
+  <!-- 交易方式 -->
   <view class="trading_mode" bindtap="handleChooseMode">
     <view class="logo iconfont icon-cangpeitubiao_fahuohuanhuofahuo" style="font-size: 40rpx;"></view>
     <view class="mode_text">交易方式</view>
@@ -55,3 +62,30 @@
   </view>
 </view>
 <!-- 价格、交易方式选择结束 -->
+
+<!-- 商品描述开始 -->
+<view class="describe">
+  <textarea placeholder="买家都关心商品型号，入手渠道，转手原因···" placeholder-class="placeholder" 
+  bindinput="descriptionBind" auto-focus maxlength="200" />
+</view>
+<!-- 商品描述结束 -->
+
+<!-- 定位开始 -->
+<view class="location_container" bindtap='getLocation'>
+  <view class="logo iconfont icon-dizhidingweiweizhi"></view>
+  <view class="location">{{addressName}}</view>
+</view>
+<!-- 定位结束 -->
+
+<!-- 上传图片开始 -->
+<!-- <button class="btn" bindtap="formSubmit">上传发布</button> -->
+<!-- <button class="btn" bindtap="upimg">选择图片</button> -->
+<button class="btn" bindtap="chooseImage">选择图片</button>
+<block wx:for="{{img_arr}}">
+  <view class="logoinfo">
+    <!-- <image src = "{{item}}"></image> -->
+  </view>
+</block>
+
+
+<!-- 上传图片结束 -->
