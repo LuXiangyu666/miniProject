@@ -1,6 +1,7 @@
 //导入request请求工具类
 import {
   getBaseUrl,
+  getWxLogin,
   requestUtil
 } from '../../utils/requestUtil';
 import regeneratorRuntime from '../../lib/runtime/runtime';
@@ -15,7 +16,7 @@ Page({
   data: {
     baseUrl: '',
     img_arr: [],
-    url: '',
+    url: [],
     formdata: '',
     addressName: '请选择您的位置', //显示在页面的地址
     address: '', //地址
@@ -28,6 +29,7 @@ Page({
     chooseCategory:'',
     typeId: '',
     description: '',
+    productId:'',
   },
 
   /**
@@ -58,6 +60,22 @@ Page({
     }
   },
 
+  //用户头像、昵称封装
+  getAjax2() {
+    return new Promise((resolve, reject) => {
+      let url = this.data.avatarUrl;
+      let name = this.data.nickName;
+      let UserMsg = [];
+      UserMsg.push(url);
+      UserMsg.push(name);
+      this.setData({
+        UserMsg,
+      })
+      resolve(this.data.UserMsg);
+      reject('失败');
+    });
+  },
+
   //处理创建商品
   async handleCreateProduct() {
     const token = wx.getStorageSync('token');
@@ -76,6 +94,7 @@ Page({
         wx.setStorageSync('userInfo', res[1]);
         this.wxlogin(loginParam);
       })
+      this.createProduct();     //获取token后创建商品
     } else {
       console.log("token存在：" + token);
       console.log("创建订单");
@@ -123,8 +142,15 @@ Page({
       method: "POST",
       data: productParam
     });
-    console.log("商品id是：")
-    //console.log("orderNo="+res.orderNo);
+    console.log(res);
+    // 创建商品成功，将后端返回的productId存到APPdata
+    this.setData({
+      productId: res.productId    
+    })
+    //跳转到新创建的商品的详情页
+    wx.redirectTo({
+      url: "/pages/product_detail/index?id="+this.data.productId,
+    })
   },
 
   //点击发布按钮
@@ -195,14 +221,17 @@ Page({
         sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
         success: function (res) {
           // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-          let tempFilePaths = res.tempFilePaths
+          let tempFilePaths = res.tempFilePaths;
+          that.setData({
+            url:that.data.url.concat(tempFilePaths),
+          })
           upload("/shop/uploadImg", tempFilePaths).then(res => {
             let data = JSON.parse(res.data)
             console.log(data)
             // let img_arr = [];
             // img_arr.concat(data.msg);
             that.setData({
-              url: that.data.baseUrl + '/upload/${data.message}',
+              //url: that.data.baseUrl + '/upload/${data.message}',
               img_arr: that.data.img_arr.concat(data.msg)
             })
           })
@@ -215,6 +244,7 @@ Page({
         duration: 3000
       });
     }
+
   },
 
 

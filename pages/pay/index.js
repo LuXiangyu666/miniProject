@@ -153,6 +153,10 @@ Page({
     }
     const res=await requestUtil({url:"/my/order/create",method:"POST",data:orderParam});
     console.log("orderNo="+res.orderNo);
+    //跳转到新创建的订单页
+    wx.redirectTo({
+      url: "/pages/order/index",
+    })
   },
 
   /**

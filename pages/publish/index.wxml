@@ -7,7 +7,9 @@
     <view>存草稿</view>
   </view>
   <view class="publish">
-    <view bindtap="handleCreateProduct">发布</view>
+    <!-- <navigator url="/pages/product_detail/index?id={{productId}}"> -->
+      <view bindtap="handleCreateProduct">发布</view>
+    <!-- </navigator> -->
   </view>
 </view>
 <!-- 顶部按键结束 -->
@@ -15,8 +17,8 @@
 <!-- 价格、交易方式选择开始 -->
 
 <view class="bottom">
-<!-- 商品名称 -->
-<view class="price">
+  <!-- 商品名称 -->
+  <view class="price">
     <view class="logo iconfont icon-cangkukucun" style="font-size: 40rpx;"></view>
     <view class="price_text">商品名称</view>
     <view class="price_input">
@@ -65,8 +67,7 @@
 
 <!-- 商品描述开始 -->
 <view class="describe">
-  <textarea placeholder="买家都关心商品型号，入手渠道，转手原因···" placeholder-class="placeholder" 
-  bindinput="descriptionBind" auto-focus maxlength="200" />
+  <textarea placeholder="买家都关心商品型号，入手渠道，转手原因···" placeholder-class="placeholder" bindinput="descriptionBind" auto-focus maxlength="200" />
 </view>
 <!-- 商品描述结束 -->
 
@@ -77,15 +78,20 @@
 </view>
 <!-- 定位结束 -->
 
+
 <!-- 上传图片开始 -->
 <!-- <button class="btn" bindtap="formSubmit">上传发布</button> -->
 <!-- <button class="btn" bindtap="upimg">选择图片</button> -->
 <button class="btn" bindtap="chooseImage">选择图片</button>
-<block wx:for="{{img_arr}}">
-  <view class="logoinfo">
-    <!-- <image src = "{{item}}"></image> -->
-  </view>
-</block>
+<view class="logoinfo">
+  <block wx:for="{{url}}">
+    <!-- <image src = "../../icons/shop_89ecf31e-064f-47e6-92ec-00978b7149d4.jpg"></image>
+    <image src = "../../icons/4bcc049fdb845dc11443f18c999d196.jpg"></image> -->
+    <!-- <view class="imageList"> -->
+    <image src="{{item}}"></image>
+    <!-- </view> -->
+  </block>
+</view>
 
 
 <!-- 上传图片结束 -->

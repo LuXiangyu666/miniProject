@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 3877032 */
-  src: url('//at.alicdn.com/t/c/font_3877032_d1rb4rjip1.woff2?t=1678881634478') format('woff2'),
-       url('//at.alicdn.com/t/c/font_3877032_d1rb4rjip1.woff?t=1678881634478') format('woff'),
-       url('//at.alicdn.com/t/c/font_3877032_d1rb4rjip1.ttf?t=1678881634478') format('truetype');
+  src: url('//at.alicdn.com/t/c/font_3877032_sjn3jwkgi1a.woff2?t=1679134182554') format('woff2'),
+       url('//at.alicdn.com/t/c/font_3877032_sjn3jwkgi1a.woff?t=1679134182554') format('woff'),
+       url('//at.alicdn.com/t/c/font_3877032_sjn3jwkgi1a.ttf?t=1679134182554') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,10 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-juli:before {
+  content: "\e622";
 }
 
 .icon-fenlei:before {
