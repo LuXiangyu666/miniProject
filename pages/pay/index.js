@@ -32,7 +32,15 @@ Page({
   onLoad(options) {
     const baseUrl = getBaseUrl();
     this.setData({
-      baseUrl
+      baseUrl,
+    })
+    var avatarUrl = wx.getStorageSync('userInfo')[0];
+    var nickName = wx.getStorageSync('userInfo')[1];
+    var token = wx.getStorageSync('token');
+    this.setData({
+      avatarUrl,
+      nickName,
+      token
     })
   },
 
@@ -108,8 +116,6 @@ Page({
       console.log("支付继续，创建订单");
       this.createOrder();
     }
-
-
   },
 
   //请求后端获取用户token

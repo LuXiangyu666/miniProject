@@ -44,8 +44,8 @@
     <image class="avatar" src="{{avatarUrl}}"></image>
   </button>
   <form catchsubmit="formSubmit" class="form">
-    <input type="nickname" class="weui-input" name="nickname" placeholder="请输入昵称" />
-    <button form-type="submit" class="setName">保存昵称</button>
+    <input type="nickname" class="weui-input" name="nickname" placeholder="{{nickName}}" />
+    <button form-type="submit" class="setName" wx:if="{{token == ''}}">保存昵称</button>
   </form>
 </view>
 <!-- 获取用户信息结束 -->

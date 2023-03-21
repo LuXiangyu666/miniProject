@@ -1,1 +1,29 @@
-/* pages/my/index.wxss */
+.page .userinfo_bg {
+  position: relative;
+  height: 40vh;
+  background-color: var(--themeColor);
+}
+.page .userinfo_bg .userinfo_content {
+  position: relative;
+  top: 30%;
+  text-align: center;
+}
+.page .userinfo_bg .userinfo_content button {
+  background-color: var(--themeColor);
+}
+.page .userinfo_bg .userinfo_content button image {
+  height: 150rpx;
+  width: 150rpx;
+  border-radius: 50%;
+  background-color: yellow;
+}
+.page .userinfo_bg .userinfo_content .userName {
+  font-size: 36rpx;
+}
+.page .userinfo_bg .userinfo_content .setName {
+  font-size: 32rpx;
+  font-weight: normal;
+}
+.page .menuList {
+  background-color: pink;
+}

@@ -1,6 +1,6 @@
 //定义请求根路径baseUrl
 //const baseUrl ="http://localhost:8080";         
-const baseUrl = "http://10.12.57.113:8080"; //BUU
+const baseUrl = "http://10.12.120.134:8080"; //BUU
 //const baseUrl ="http://192.168.43.163:8080";      //手机wifi
 //const baseUrl ="http://192.168.16.122:8080";       //晶晶哥家
 

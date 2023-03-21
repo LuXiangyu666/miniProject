@@ -1,2 +1,28 @@
-<!--pages/my/index.wxml-->
-<text>pages/my/index.wxml</text>
+<view class="page">
+  <!-- 用户头像昵称开始 -->
+  <view class="userinfo_bg">
+    <view class="userinfo_content">
+      <button open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+        <image src="{{avatarUrl}}"></image>
+      </button>
+
+      <form catchsubmit="formSubmit" class="form">
+        <input type="nickname" class="userName" name="nickname" placeholder="{{nickName}}" />
+        <block wx:if="{{token == ''}}">
+          <button form-type="submit" class="setName">保存昵称</button>
+          <button form-type="submit" class="setName" bindtap="handleOrderPay">确认登录</button>
+        </block>
+      </form>
+
+
+    </view>
+  </view>
+  <!-- 用户头像昵称结束 -->
+
+  <!-- 功能列表昵称开始 -->
+  <view class="menuList">
+    我的订单
+  </view>
+  <!-- 功能列表昵称结束 -->
+
+</view>
