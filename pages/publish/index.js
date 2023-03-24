@@ -225,6 +225,7 @@ Page({
           that.setData({
             url:that.data.url.concat(tempFilePaths),
           })
+          console.log("url成功")
           upload("/shop/uploadImg", tempFilePaths).then(res => {
             let data = JSON.parse(res.data)
             console.log(data)
@@ -234,6 +235,7 @@ Page({
               //url: that.data.baseUrl + '/upload/${data.message}',
               img_arr: that.data.img_arr.concat(data.msg)
             })
+            console.log("img_arr成功")
           })
         }
       })
