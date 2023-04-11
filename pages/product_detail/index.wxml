@@ -23,7 +23,7 @@
   </view>
   <view class="content2">
     <view class="product_address iconfont icon-dizhidingweiweizhi">{{productObj.address}}</view>
-    <view class="product_distance iconfont icon-juli">距我：10公里</view>
+    <view class="product_distance iconfont icon-juli">距我：{{distance}}</view>
   </view>
 </view>
 

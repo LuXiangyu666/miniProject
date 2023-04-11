@@ -26,11 +26,17 @@ Page({
     price: '',
     stock: '',
     chooseMode: '',
-    chooseCategory:'',
+    chooseCategory: '', //商品大类
+    chooseSmallCategory: '', //商品小类
     typeId: '',
     description: '',
-    productId:'',
+    productId: '',
+    Cates: [], //  所有数据
+    bigTypeId: '', //商品大类id
   },
+
+
+
 
   /**
    * 生命周期函数--监听页面加载
@@ -40,8 +46,71 @@ Page({
     this.setData({
       baseUrl
     })
+    this.getCates();
   },
 
+  //获取商品分类数据
+  async getCates() {
+    const result = await requestUtil({
+      url: '/bigType/findCategories',
+      method: "GET"
+    });
+    let Cates = result.message;
+    this.setData({
+      Cates
+    })
+    //console.log(this.data.Cates);
+    let leftMenuList = this.data.Cates.map((v) => {
+      return v.name;
+    })
+    wx.setStorageSync('bigType', leftMenuList)
+  },
+
+  //选择商品大类
+  handleChooseCategory() {
+    var that = this;
+    let chooseCategory = '';
+    let bigType = wx.getStorageSync('bigType');
+    wx.showActionSheet({
+      itemList: bigType,
+      itemColor: '#007aff',
+      success: (res) => {
+        //console.log(res.tapIndex);
+        chooseCategory = bigType[res.tapIndex];
+        let bigTypeId = res.tapIndex;
+        let smallType = this.data.Cates[res.tapIndex].smallTypeList.map((v) => {
+          return v.name;
+        })
+        //console.log(smallType);
+        wx.setStorageSync('smallType', smallType)
+        that.setData({
+          //typeId:res.tapIndex+1,
+          chooseCategory,
+          bigTypeId,
+        })
+      }
+    })
+  },
+
+  //选择商品小类
+  handleChooseSmallCategory() {
+    var that = this;
+    let chooseSmallCategory = '';
+    let smallType = wx.getStorageSync('smallType');
+    wx.showActionSheet({
+      itemList: smallType,
+      itemColor: '#007aff',
+      success: (res) => {
+        //console.log(res.tapIndex);
+        chooseSmallCategory = smallType[res.tapIndex];
+        let bigTypeId = this.data.bigTypeId;
+        that.setData({
+          typeId: this.data.Cates[bigTypeId].smallTypeList[res.tapIndex].id,
+          chooseSmallCategory,
+        })
+      }
+    })
+  },
   //请求后端获取用户token
   async wxlogin(loginParam) {
     const result = await requestUtil({
@@ -94,7 +163,7 @@ Page({
         wx.setStorageSync('userInfo', res[1]);
         this.wxlogin(loginParam);
       })
-      this.createProduct();     //获取token后创建商品
+      this.createProduct(); //获取token后创建商品
     } else {
       console.log("token存在：" + token);
       console.log("创建订单");
@@ -114,13 +183,14 @@ Page({
     const longitude = this.data.longitude;
     const latitude = this.data.latitude;
     const proPic = this.data.img_arr[0];
-    let swiperTab=[];
+    const sellerId = wx.getStorageSync('sellerId');
+    let swiperTab = [];
     // for(var i = 0; i<this.data.img_arr.length; i++){
     //   swiperTab[i].image = this.data.img_arr[i];
     //   swiperTab[i].sort = i;
     // }
     //var i = 0;
-    this.data.img_arr.forEach(v=>swiperTab.push({
+    this.data.img_arr.forEach(v => swiperTab.push({
       image: v,
       //sort: v.index,
     }))
@@ -136,6 +206,7 @@ Page({
       latitude,
       proPic,
       swiperTab,
+      sellerId,
     }
     const res = await requestUtil({
       url: "/my/order/createProduct",
@@ -145,11 +216,11 @@ Page({
     console.log(res);
     // 创建商品成功，将后端返回的productId存到APPdata
     this.setData({
-      productId: res.productId    
+      productId: res.productId
     })
     //跳转到新创建的商品的详情页
     wx.redirectTo({
-      url: "/pages/product_detail/index?id="+this.data.productId,
+      url: "/pages/product_detail/index?id=" + this.data.productId,
     })
   },
 
@@ -223,7 +294,7 @@ Page({
           // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
           let tempFilePaths = res.tempFilePaths;
           that.setData({
-            url:that.data.url.concat(tempFilePaths),
+            url: that.data.url.concat(tempFilePaths),
           })
           console.log("url成功")
           upload("/shop/uploadImg", tempFilePaths).then(res => {
@@ -314,24 +385,7 @@ Page({
     })
   },
 
-  //选择商品类别
-  handleChooseCategory() {
-    var that = this;
-    let chooseCategory = '';
-    let bigType = wx.getStorageSync('bigType');
-    wx.showActionSheet({
-      itemList: bigType,
-      itemColor: '#007aff',
-      success(res) {
-        console.log(res.tapIndex);
-        chooseCategory = bigType[res.tapIndex];
-        that.setData({
-          typeId:res.tapIndex+1,
-          chooseCategory,
-        })
-      }
-    })
-  },
+
 
   //选择交易方式
   handleChooseMode() {

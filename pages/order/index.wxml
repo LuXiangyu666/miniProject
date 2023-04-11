@@ -1,17 +1,5 @@
-<view class="tabs">
-  <view class="tabs_title">
-    <view
-      bindtap="handleItemTap"
-      data-index="{{index}}"
-      wx:for="{{tabs}}"
-      wx:key="id"
-      class="title_item {{item.isActive?'active':''}}">
-      {{item.value}}
-    </view>
-   
-  </view>
-  <view class="tabs_content">
-    <view class="order_main">
+<Tabs tabs="{{tabs}}" bindtabsItemChange="handleTabsItemChange">
+  <view class="order_main">
       <view 
         wx:for="{{orders}}"
         wx:key="id"
@@ -30,5 +18,4 @@
         </view>
       </view>
     </view>
-  </view>
-</view>
+</Tabs>

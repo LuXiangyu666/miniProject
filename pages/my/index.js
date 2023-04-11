@@ -80,9 +80,11 @@ Page({
     })
     console.log(result);
     const token = result.token;
+    const sellerId = result.id;
     if (result.code === 0) {
       //存储token到缓存
       wx.setStorageSync('token', token);
+      wx.setStorageSync('sellerId', sellerId);
     }
   },
 
@@ -119,6 +121,13 @@ Page({
       resolve(this.data.UserMsg);
       reject('失败');
     });
+  },
+
+  // 点击 编辑收货地址
+  handleEditAddress(){
+    wx.chooseAddress({
+      success: (result) => {},
+    })
   },
 
   /**

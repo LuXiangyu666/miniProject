@@ -44,13 +44,22 @@
       <view class="RAM"></view>
     </view>
   </view>
-  <!-- 商品分类 -->
+  <!-- 商品大类 -->
   <view class="trading_mode" bindtap="handleChooseCategory">
     <view class="logo iconfont icon-fenlei" style="font-size: 40rpx;"></view>
-    <view class="mode_text">商品类别</view>
+    <view class="mode_text">商品大类</view>
     <view class="mode_choose">
       <view class="arrowhead">></view>
       <view class="mode">{{chooseCategory}}</view>
+    </view>
+  </view>
+  <!-- 商品小类 -->
+  <view class="trading_mode" bindtap="handleChooseSmallCategory">
+    <view class="logo iconfont icon-fenlei" style="font-size: 40rpx;"></view>
+    <view class="mode_text">商品小类</view>
+    <view class="mode_choose">
+      <view class="arrowhead">></view>
+      <view class="mode">{{chooseSmallCategory}}</view>
     </view>
   </view>
   <!-- 交易方式 -->

@@ -1,6 +1,7 @@
 //定义请求根路径baseUrl
-//const baseUrl ="http://localhost:8080";         
-const baseUrl = "http://10.12.120.134:8080"; //BUU
+//还要更改upload.js文件里上传图片的路径
+const baseUrl ="http://localhost:8080";         
+//const baseUrl = "http://10.12.75.207:8080"; //BUU
 //const baseUrl ="http://192.168.43.163:8080";      //手机wifi
 //const baseUrl ="http://192.168.16.122:8080";       //晶晶哥家
 
@@ -54,7 +55,7 @@ export const requestUtil = (params) => {
   }
 
   var start = new Date().getTime();
-  console.log(start);
+  //console.log(start);
   ajaxTimes++; //每次请求时，ajaxTimes加一
   wx.showLoading({
     title: '加载中',

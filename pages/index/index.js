@@ -93,7 +93,7 @@ Page({
       url: '/bigType/findAll',
       method: "GET"
     });
-    console.log(result)
+    //console.log(result)
     const bigTypeList = result.message;
     const bigTypeList_row1 = bigTypeList.filter((item, index) => {
       return index < 5;

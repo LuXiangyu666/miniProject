@@ -33,6 +33,7 @@
         wx:for-item="bigType"
         wx:key="id">
         <image mode="widthFix" src="{{baseUrl+'/image/bigType/'+bigType.image}}"></image>
+        <view class="bigTypeName">{{bigType.name}}</view>
       </navigator>
     </view>
     <!-- 第二行 -->
@@ -44,6 +45,7 @@
         wx:for-item="bigType"
         wx:key="id">
         <image mode="widthFix" src="{{baseUrl+'/image/bigType/'+bigType.image}}"></image>
+        <view class="bigTypeName">{{bigType.name}}</view>
       </navigator>
     </view>
   </view>

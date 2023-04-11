@@ -13,10 +13,14 @@
   display: flex;
 }
 .index_bigType .bigTypeRow navigator {
-  flex: 1;
+  margin: 3rpx 0rpx;
 }
 .index_bigType .bigTypeRow navigator image {
   width: 150rpx;
+  height: 100%;
+}
+.index_bigType .bigTypeRow navigator .bigTypeName {
+  text-align: center;
 }
 .index_hotProduct .product_title {
   font-size: 32rpx;

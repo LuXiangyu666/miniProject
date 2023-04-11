@@ -17,6 +17,7 @@ Page({
     baseUrl: '',
     productObj:{},
     activeIndex:0,
+    distance:0,        //距离
   },
 
   productInfo:{
@@ -33,7 +34,35 @@ Page({
       baseUrl
     })
     this.getProductDetail(options.id);
+    
   },
+
+  
+
+  
+   // 计算距离函数
+   Rad(d) { 
+    //根据经纬度判断距离
+    return d * Math.PI / 180.0;
+  },
+  getDistance(lat1, lng1, lat2, lng2) {
+      // lat1用户的纬度
+      // lng1用户的经度
+      // lat2商家的纬度
+      // lng2商家的经度
+      var radLat1 = this.Rad(lat1);
+      var radLat2 = this.Rad(lat2);
+      var a = radLat1 - radLat2;
+      var b = this.Rad(lng1) - this.Rad(lng2);
+      var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(radLat1) * Math.cos(radLat2) * Math.pow(Math.sin(b / 2), 2)));
+      s = s * 6378.137;
+      s = Math.round(s * 10000) / 10000;
+      console.log(s);
+      s = s.toFixed(1) + 'km' //保留两位小数
+      console.log('经纬度计算的距离:' + s)
+      return s
+  },
+
 
   //商品详细信息切换点击事件
   handleItemTap(e){
@@ -54,6 +83,16 @@ Page({
     this.productInfo = result.message;
     this.setData({
       productObj: result.message,
+    })
+
+    let lat1 = wx.getStorageSync('positon').latitude;   // lat1用户的纬度 lng1用户的经度 lat2商家的纬度  lng2商家的经度
+    let lng1 = wx.getStorageSync('positon').longitude;
+    let lat2 = this.data.productObj.latitude;
+    let lng2 = this.data.productObj.longitude;
+    let distance = this.getDistance(lat1,lng1,lat2,lng2);
+    console.log(distance);
+    this.setData({
+      distance,
     })
   },
 
