@@ -10,6 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    baseUrl: '',
     productList:[], // 商品数组
     inputValue:"", // 输入框的值
     isFocus:false // 取消 按钮 是否显示
@@ -67,7 +68,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    const baseUrl = getBaseUrl();
+    this.setData({
+      baseUrl
+    })
   },
 
   /**

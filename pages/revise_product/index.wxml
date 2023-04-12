@@ -1,0 +1,101 @@
+
+<!-- 商品图片修改未完成 -->
+
+<!-- 顶部按键开始 -->
+<view class="topButton">
+  <view class="cancel">
+    <view>清空</view>
+  </view>
+  <view class="draft">
+    <view>存草稿</view>
+  </view>
+  <view class="publish">
+    <!-- <navigator url="/pages/product_detail/index?id={{productId}}"> -->
+      <view bindtap="handleCreateProduct">保存</view>
+    <!-- </navigator> -->
+  </view>
+</view>
+<!-- 顶部按键结束 -->
+
+<!-- 价格、交易方式选择开始 -->
+
+<view class="bottom">
+  <!-- 商品名称 -->
+  <view class="price">
+    <view class="logo iconfont icon-cangkukucun" style="font-size: 40rpx;"></view>
+    <view class="price_text">商品名称</view>
+    <view class="price_input">
+      <input class="input" auto-focus placeholder="{{productMsg.name}}" placeholder-class="placeholder" bindinput="productNameBind" />
+      <view class="RAM"></view>
+    </view>
+  </view>
+  <!-- 商品价格 -->
+  <view class="price">
+    <view class="logo iconfont icon-jiage" style="font-size: 40rpx;"></view>
+    <view class="price_text">价格</view>
+    <view class="price_input">
+      <input class="input input_color" auto-focus placeholder="{{productMsg.price}}" placeholder-class="placeholder" bindinput="priceBind" />
+      <view class="RAM">¥</view>
+    </view>
+  </view>
+  <!-- 商品库存 -->
+  <view class="price">
+    <view class="logo iconfont icon-cangkukucun" style="font-size: 40rpx;"></view>
+    <view class="price_text">数量</view>
+    <view class="price_input">
+      <input class="input" auto-focus placeholder="{{productMsg.stock}}" placeholder-class="placeholder" bindinput="stockBind" />
+      <view class="RAM"></view>
+    </view>
+  </view>
+  <!-- 商品大类 -->
+  <!-- <view class="trading_mode" bindtap="handleChooseCategory">
+    <view class="logo iconfont icon-fenlei" style="font-size: 40rpx;"></view>
+    <view class="mode_text">商品大类</view>
+    <view class="mode_choose">
+      <view class="arrowhead">></view>
+      <view class="mode">{{chooseCategory}}</view>
+    </view>
+  </view> -->
+  <!-- 商品小类 -->
+  <!-- <view class="trading_mode" bindtap="handleChooseSmallCategory">
+    <view class="logo iconfont icon-fenlei" style="font-size: 40rpx;"></view>
+    <view class="mode_text">商品小类</view>
+    <view class="mode_choose">
+      <view class="arrowhead">></view>
+      <view class="mode">{{chooseSmallCategory}}</view>
+    </view>
+  </view> -->
+  <!-- 交易方式 -->
+  <view class="trading_mode" bindtap="handleChooseMode">
+    <view class="logo iconfont icon-cangpeitubiao_fahuohuanhuofahuo" style="font-size: 40rpx;"></view>
+    <view class="mode_text">交易方式</view>
+    <view class="mode_choose">
+      <view class="arrowhead">></view>
+      <view class="mode">{{productMsg.chooseMode}}</view>
+    </view>
+  </view>
+</view>
+<!-- 价格、交易方式选择结束 -->
+
+<!-- 商品描述开始 -->
+<view class="describe">
+  <textarea placeholder="{{productMsg.description}}" placeholder-class="placeholder" bindinput="descriptionBind" auto-focus maxlength="200" />
+</view>
+<!-- 商品描述结束 -->
+
+<!-- 定位开始 -->
+<view class="location_container" bindtap='getLocation'>
+  <view class="logo iconfont icon-dizhidingweiweizhi"></view>
+  <view class="location">{{productMsg.address}}</view>
+</view>
+<!-- 定位结束 -->
+
+
+<button class="btn" bindtap="chooseImage">选择图片</button>
+<view class="logoinfo">
+  <block wx:for="{{productMsg.productSwiperImageList}}">
+    <image src="{{baseUrl+'/image/productSwiperImgs/'+item.image}}"></image>
+    <!-- </view> -->
+  </block>
+</view>
+<!-- 上传图片结束 -->

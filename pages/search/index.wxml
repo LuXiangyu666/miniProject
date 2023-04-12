@@ -2,7 +2,7 @@
   <input type="text" model:value="{{inputValue}}" placeholder="请输入商品关键字" bindinput="handleInput"/>
   <button hidden="{{!isFocus}}" bindtap="handleCancel">取消</button>
 </view>
-<view class="search_content">
+<!-- <view class="search_content">
   <navigator
     class="search_item"
     wx:for="{{productList}}"
@@ -11,4 +11,23 @@
   >
   {{item.name}}
   </navigator>
-</view>
+</view> -->
+
+  <!-- 搜索结果显示开始 -->
+  <view class="index_hotProduct">
+    <view class="product_title">我的商品</view>
+    <view class="product_list">
+      <view class="product_detail"
+      wx:for="{{productList}}"
+      wx:for-item="myProduct"
+      wx:key="id">
+        <navigator  url="/pages/product_detail/index?id={{myProduct.id}}">
+          <image mode="widthFix" src="{{baseUrl+'/image/product/'+myProduct.proPic}}"></image>
+          <view class="product_name">{{myProduct.name}}</view>
+          <view class="product_price"> ¥ {{myProduct.price}}</view>
+          <button size="mini" type="warn">立即购买</button>
+        </navigator>
+      </view>
+    </view>
+  </view>
+  <!-- 搜索结果显示结束 -->

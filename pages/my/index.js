@@ -20,6 +20,7 @@ Page({
     avatarUrl: defaultAvatarUrl, //用户头像地址
     nickName: '请选择昵称',
     UserMsg: [],
+    sellerId:'',    //用户id
   },
 
   /**
@@ -39,6 +40,8 @@ Page({
     //   nickName
     // })
   },
+
+
 
   async handleOrderPay() {
     const token = wx.getStorageSync('token');
@@ -86,6 +89,7 @@ Page({
       wx.setStorageSync('token', token);
       wx.setStorageSync('sellerId', sellerId);
     }
+    
   },
 
   //载入用户头像
@@ -130,6 +134,11 @@ Page({
     })
   },
 
+  //已发布商品管理
+  handleMyProduct(){
+
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -144,12 +153,14 @@ Page({
     var avatarUrl = wx.getStorageSync('userInfo')[0];
     var nickName = wx.getStorageSync('userInfo')[1];
     var token = wx.getStorageSync('token');
+    var sellerId = wx.getStorageSync('sellerId');
     console.log("头像地址是："+avatarUrl);
     console.log("昵称是："+nickName);
     this.setData({
       avatarUrl,
       nickName,
       token,
+      sellerId,
     })
   },
 

@@ -8,7 +8,10 @@
     "pages/search/index",
     "pages/product_detail/index",
     "pages/pay/index",
-    "pages/order/index"
+    "pages/order/index",
+    "pages/myproduct/index",
+    "pages/revise_product/index"
+
   ],
   "requiredPrivateInfos":[
     "chooseAddress",

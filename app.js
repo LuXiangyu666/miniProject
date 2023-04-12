@@ -1,7 +1,10 @@
 // app.js
 App({
   onLaunch() {
-   this.getLocation();
+    const positon = wx.getStorageSync('positon');     
+    if(!positon){           //当缓存中没有位置信息时才进行获取
+      this.getLocation();
+    }
   },
 
   //获取用户定位
