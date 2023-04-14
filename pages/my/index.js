@@ -21,6 +21,7 @@ Page({
     nickName: '请选择昵称',
     UserMsg: [],
     sellerId:'',    //用户id
+    img:[],
   },
 
   /**
@@ -55,6 +56,7 @@ Page({
           code: res[0].code,
           nickName: res[1][1],
           avatarUrl: res[1][0],
+          wxuserImg:this.data.img
         }
         console.log("loginParam="+loginParam);
         wx.setStorageSync('userInfo', res[1]);
@@ -94,12 +96,28 @@ Page({
 
   //载入用户头像
   onChooseAvatar(e) {
-    console.log(e);
+    var that = this;
     const {avatarUrl} = e.detail
     this.setData({
       avatarUrl,
     })
+    wx.uploadFile({
+      filePath: avatarUrl,
+      name: 'avatarImg',
+      url:  'http://localhost:8080//shop/avatarUrl',  //接口地址
+      success:function(res){
+        console.log(res);//发送成功回调
+        let img = res.data;
+        that.setData({
+          img,
+        })
+      },
+      fail:function(res){
+        console.log(res);//发送失败回调，可以在这里了解失败原因
+      }
+    })
   },
+
 
   //将用户名载入页面数据
   formSubmit(e) {
