@@ -11,7 +11,7 @@
   </view>
   <view class="publish">
     <!-- <navigator url="/pages/product_detail/index?id={{productId}}"> -->
-      <view bindtap="handleCreateProduct">保存</view>
+      <view bindtap="reviseProduct">保存</view>
     <!-- </navigator> -->
   </view>
 </view>

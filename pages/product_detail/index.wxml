@@ -35,7 +35,7 @@
     <view class="title_item {{activeIndex==0 ? 'active' : ''}}"  
     data-index="0" bindtap="handleItemTap">商品介绍</view>
     <view class="title_item {{activeIndex==1 ? 'active' : ''}}"
-    data-index="1" bindtap="handleItemTap">规格参数</view>
+    data-index="1" bindtap="handleItemTap">商品留言</view>
   </view>
   <!-- 商品详细信息标题结束 -->
 

@@ -26,6 +26,24 @@ Page({
     this.getProductList(options.id);
   },
 
+  
+  //创建商品
+  async reviseProduct() {
+    const productParam = this.data.productMsg;
+    const res = await requestUtil({
+      url: "/product/revise",
+      method: "POST",
+      data: productParam
+    });
+    console.log(res);
+   
+    //跳转到新创建的商品的详情页
+    wx.redirectTo({
+      url: "/pages/product_detail/index?id=" + this.data.productMsg.id,
+    })
+  },
+
+
   //获取商品信息
   async getProductList(id) {
     const result = await requestUtil({
@@ -36,6 +54,7 @@ Page({
     this.setData({
       productMsg: result.message,
     })
+    console.log(result.message);
   },
 
   

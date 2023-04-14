@@ -185,14 +185,8 @@ Page({
     const proPic = this.data.img_arr[0];
     const sellerId = wx.getStorageSync('sellerId');
     let swiperTab = [];
-    // for(var i = 0; i<this.data.img_arr.length; i++){
-    //   swiperTab[i].image = this.data.img_arr[i];
-    //   swiperTab[i].sort = i;
-    // }
-    //var i = 0;
     this.data.img_arr.forEach(v => swiperTab.push({
       image: v,
-      //sort: v.index,
     }))
     const productParam = {
       name,
