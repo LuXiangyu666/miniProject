@@ -1,13 +1,11 @@
 <!-- 商品轮播开始 -->
 <view class="product_swiper">
   <swiper indicator-dots autoplay circular>
-      <swiper-item
-        wx:for="{{productObj.productSwiperImageList}}"
-        wx:key="id">
-        <navigator>
-          <image mode="widthFix" src="{{baseUrl+'/image/productSwiperImgs/'+item.image}}"></image>        
-        </navigator>
-      </swiper-item>
+    <swiper-item wx:for="{{productObj.productSwiperImageList}}" wx:key="id">
+      <navigator>
+        <image mode="widthFix" src="{{baseUrl+'/image/productSwiperImgs/'+item.image}}"></image>
+      </navigator>
+    </swiper-item>
   </swiper>
 </view>
 <!-- 商品轮播结束 -->
@@ -31,11 +29,9 @@
 
 <view class="desc_tabs">
   <!-- 商品详细信息标题开始 -->
-  <view class="tabs_title">   
-    <view class="title_item {{activeIndex==0 ? 'active' : ''}}"  
-    data-index="0" bindtap="handleItemTap">商品介绍</view>
-    <view class="title_item {{activeIndex==1 ? 'active' : ''}}"
-    data-index="1" bindtap="handleItemTap">商品留言</view>
+  <view class="tabs_title">
+    <view class="title_item {{activeIndex==0 ? 'active' : ''}}" data-index="0" bindtap="handleItemTap">商品介绍</view>
+    <view class="title_item {{activeIndex==1 ? 'active' : ''}}" data-index="1" bindtap="handleItemTap">商品留言</view>
   </view>
   <!-- 商品详细信息标题结束 -->
 
@@ -45,17 +41,53 @@
   <!-- 商品详细信息内容开始 -->
   <view class="tabs_content">
     <!-- block不会添加多的view标签，用于纯粹的逻辑判断 -->
-    <block wx:if="{{activeIndex==0}}">   
+    <block wx:if="{{activeIndex==0}}">
       <!-- 商品介绍 -->
       <view class="product_description">{{productObj.description}}</view>
     </block>
     <block wx:elif="{{activeIndex==1}}">
-    <!-- 商品留言开始 -->
-      <view>商品留言</view>
+      <!-- 商品留言开始 -->
+      <!-- 留言输入框开始 -->
+      <view class="describe">
+        <textarea placeholder="输入你的留言..." placeholder-class="placeholder" bindinput="descriptionBind" auto-focus maxlength="200" model:value="{{remark}}" />
+        <view class="publish">
+          <view bindtap="handleCreateRemark">发布</view>
+        </view>
+      </view>
+      <!-- 留言输入框结束 -->
+      <!-- 留言列表开始 -->
+      <view class="contain">
+        <view class="remark_list" wx:for="{{remarkList}}" wx:for-item="remarkItem" wx:key="id">
+          <view class="wxuserImg">
+            <image mode="widthFix" src="{{baseUrl+'/image/wxuserImg/'+remarkItem.wxuserImg}}"></image>
+          </view>
+          <view class="remark_container">
+            <view class="name">
+              {{remarkItem.user_name}}
+            </view>
+            <view class="content">
+              {{remarkItem.content}}
+            </view>
+            <view class="bottom">
+              <view class="time">
+                {{remarkItem.time}}
+              </view>
+              <block wx:if="{{remarkItem.user_id==user_id}}">
+                <view class="delete" bindtap="handleDeleteRemark" data-id="{{remarkItem.id}}">
+                  删除
+                </view>
+              </block>
+
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 留言列表结束 -->
+
+      <!-- 商品留言结束 -->
 
 
-
-     <!-- 商品留言结束 -->
     </block>
   </view>
   <!-- 商品详细信息内容结束 -->
@@ -85,5 +117,3 @@
   <!-- 底部工具栏结束 -->
 
 </view>
-
-

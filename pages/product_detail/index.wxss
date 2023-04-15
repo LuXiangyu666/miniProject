@@ -65,7 +65,73 @@
   margin: 20rpx 0px 20rpx 10rpx;
 }
 .desc_tabs .tabs_content .product_description {
+  font-size: larger;
   padding: 0 10rpx 25rpx;
+}
+.desc_tabs .tabs_content .describe {
+  display: flex;
+  margin: 30rpx 10rpx;
+}
+.desc_tabs .tabs_content .describe textarea {
+  flex: 4;
+  border: 1rpx solid black;
+  height: 50rpx;
+  padding: 10rpx;
+}
+.desc_tabs .tabs_content .describe textarea .placeholder {
+  font-size: 30rpx;
+  color: #c5c5c5;
+}
+.desc_tabs .tabs_content .describe .publish {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30rpx;
+  background-color: #fffb00;
+  border-radius: 30rpx;
+  margin: 4rpx 10rpx;
+}
+.desc_tabs .tabs_content .contain {
+  padding-bottom: 70rpx;
+  height: auto;
+  width: 100%;
+}
+.desc_tabs .tabs_content .contain .remark_list {
+  display: flex;
+  height: auto;
+  margin: 5rpx 5rpx 30rpx 5rpx;
+}
+.desc_tabs .tabs_content .contain .remark_list .wxuserImg {
+  flex: 1;
+}
+.desc_tabs .tabs_content .contain .remark_list .wxuserImg image {
+  border-radius: 50%;
+}
+.desc_tabs .tabs_content .contain .remark_list .remark_container {
+  flex: 7;
+  display: flex;
+  flex-direction: column;
+  margin-left: 10rpx;
+}
+.desc_tabs .tabs_content .contain .remark_list .remark_container .name {
+  flex: 1;
+}
+.desc_tabs .tabs_content .contain .remark_list .remark_container .content {
+  flex: 2;
+  font-size: larger;
+}
+.desc_tabs .tabs_content .contain .remark_list .remark_container .bottom {
+  flex: 1;
+  display: flex;
+}
+.desc_tabs .tabs_content .contain .remark_list .remark_container .bottom .time {
+  flex: 8;
+}
+.desc_tabs .tabs_content .contain .remark_list .remark_container .bottom .delete {
+  flex: 1;
+  color: red;
+  justify-content: right;
 }
 .btm_tool {
   position: fixed;

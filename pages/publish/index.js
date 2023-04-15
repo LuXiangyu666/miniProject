@@ -183,7 +183,7 @@ Page({
     const longitude = this.data.longitude;
     const latitude = this.data.latitude;
     const proPic = this.data.img_arr[0];
-    const sellerId = wx.getStorageSync('sellerId');
+    const sellerId = wx.getStorageSync('user_id');
     let swiperTab = [];
     this.data.img_arr.forEach(v => swiperTab.push({
       image: v,

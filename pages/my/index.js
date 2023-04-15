@@ -20,8 +20,9 @@ Page({
     avatarUrl: defaultAvatarUrl, //用户头像地址
     nickName: '请选择昵称',
     UserMsg: [],
-    sellerId:'',    //用户id
+    user_id:'',    //用户id
     img:[],
+    token:'',
   },
 
   /**
@@ -60,6 +61,7 @@ Page({
         }
         console.log("loginParam="+loginParam);
         wx.setStorageSync('userInfo', res[1]);
+        wx.setStorageSync('wxuserImg', this.data.img);
         this.wxlogin(loginParam);
         this.setData({
           userInfo: res[1],
@@ -85,11 +87,14 @@ Page({
     })
     console.log(result);
     const token = result.token;
-    const sellerId = result.id;
+    const user_id = result.id;
     if (result.code === 0) {
       //存储token到缓存
       wx.setStorageSync('token', token);
-      wx.setStorageSync('sellerId', sellerId);
+      wx.setStorageSync('user_id', user_id);
+      this.setData({
+        user_id
+      })
     }
     
   },
@@ -171,14 +176,14 @@ Page({
     var avatarUrl = wx.getStorageSync('userInfo')[0];
     var nickName = wx.getStorageSync('userInfo')[1];
     var token = wx.getStorageSync('token');
-    var sellerId = wx.getStorageSync('sellerId');
+    var user_id = wx.getStorageSync('user_id');
     console.log("头像地址是："+avatarUrl);
     console.log("昵称是："+nickName);
     this.setData({
       avatarUrl,
       nickName,
       token,
-      sellerId,
+      user_id,
     })
   },
 

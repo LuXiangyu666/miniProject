@@ -54,7 +54,7 @@
 
     <!-- 商品管理开始 -->
     <navigator  
-    url="/pages/myproduct/index?id={{sellerId}}">
+    url="/pages/myproduct/index?id={{user_id}}">
       <view class="address_wrap" bindtap="handleMyProduct">
         我的商品管理
       </view>
