@@ -10,7 +10,8 @@
     "pages/pay/index",
     "pages/order/index",
     "pages/myproduct/index",
-    "pages/revise_product/index"
+    "pages/revise_product/index",
+    "pages/order_detail/index"
 
   ],
   "requiredPrivateInfos":[

@@ -4,6 +4,7 @@
         wx:for="{{orders}}"
         wx:key="id"
       class="order_item">
+      <navigator url="/pages/order_detail/index?id={{item.id}}">
         <view class="order_no_row">
           <view class="order_no_text">订单编号</view>
           <view class="order_no_value">{{item.orderNo}}</view>
@@ -16,6 +17,7 @@
           <view class="order_time_text">订单日期</view>
           <view class="order_time_value">{{item.createDate}}</view>
         </view>
+      </navigator>
       </view>
     </view>
 </Tabs>

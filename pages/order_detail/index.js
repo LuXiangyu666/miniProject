@@ -11,7 +11,8 @@ Page({
    */
   data: {
     baseUrl: '',
-    myProductList: [],
+    orderId:'',
+    productList: [],
     productState: ['', '审核中', '已上架', '未发货', '已发货', '已收货'],
   },
 
@@ -19,52 +20,79 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    //console.log(options.id);      //用options.id获取参数id
+    console.log(options.id); //用options.id获取参数id
     const baseUrl = getBaseUrl();
     this.setData({
       baseUrl
     })
-    this.getMyProductList(options.id);
+    this.getProductList(options.id);
+    this.setData({
+      orderId:options.id,
+    })
 
   },
 
-
-  //发货
-  async handleFaHuo(event) {
+  //收货
+  async handleShouHuo(event) {
     //console.log(event);
     let index = event.currentTarget.dataset.index;
-    if (this.data.myProductList[index].state == 3) {
+    if (this.data.productList[index].state == 4) {
       let id = event.currentTarget.dataset.id;
       const result = await requestUtil({
-        url: '/product/fahuo',
+        url: '/product/shouhuo',
         method: "GET",
         data: {id},
       });
       console.log(result);
-      this.getMyProductList(this.data.myProductList[0].sellerId);
+      //this.getProductList(this.data.productList[0].sellerId);
+      this.setData({
+        productList:[],
+      })
+      this.getProductList(this.data.orderId);
       wx.showToast({
-        title: '发货成功',
+        title: '收货成功',
         icon: 'success',
-        duration: 500 //持续的时间
+        duration: 800 //持续的时间
       })
     }
   },
 
-
-
-  //获取我的商品
-  async getMyProductList(id) {
+  //获取订单商品列表
+  async getProductList(id) {
     const result = await requestUtil({
-      url: '/product/myproduct',
+      url: '/my/order/productIdList',
       method: "GET",
       data: {
         id
       },
     });
+    console.log(result.message);
+    var result_id = result.message;
+    for (var key in result_id) {
+      console.log(key); // key值
+      console.log(result_id[key]); // value值
+      let id = result_id[key].goodsId;
+      this.getProductDetail(id);
+    }
+  },
+
+
+
+  //获取商品详情
+  async getProductDetail(id) {
+    const result = await requestUtil({
+      url: '/product/detail',
+      data: {id},
+      method: "GET"
+    });
+    let productList = this.data.productList;
+    productList.push(result.message);
     this.setData({
-      myProductList: result.message,
+      productList
     })
   },
+
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
