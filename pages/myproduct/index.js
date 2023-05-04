@@ -12,7 +12,7 @@ Page({
   data: {
     baseUrl: '',
     myProductList: [],
-    productState: ['', '审核中', '已上架', '未发货', '已发货', '已收货'],
+    productState: ['审核未通过', '审核中', '已上架', '未发货', '已发货', '卖家已收货'],
   },
 
   /**
