@@ -12,6 +12,8 @@
           </view>
         </navigator>
         <button size="mini" type="warn" data-id="{{myProduct.id}}" data-index="{{index}}" bindtap="handleShouHuo" >{{productState[myProduct.state]}}</button>
+        <button size="mini" type="warn" wx:if="{{myProduct.state===5}}" 
+        data-id="{{myProduct.id}}" data-index="{{index}}" bindtap="handleTuiHuo">退货</button>
       </view>
     </view>
   </view>

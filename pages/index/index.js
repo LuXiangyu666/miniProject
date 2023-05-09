@@ -46,10 +46,10 @@ Page({
 
   //商品分类跳转事件   跳转到商品分类页面
   handleTypeJump(e){
+    console.log(e);
     const {index} = e.currentTarget.dataset;
     const app = getApp()
     app.globalData.index = index;
-
     wx:wx.switchTab({
       url: '/pages/category/index',
     })
@@ -96,10 +96,10 @@ Page({
     //console.log(result)
     const bigTypeList = result.message;
     const bigTypeList_row1 = bigTypeList.filter((item, index) => {
-      return index < 5;
+      return index < 3;
     })
     const bigTypeList_row2 = bigTypeList.filter((item, index) => {
-      return index >= 5;
+      return index >= 3;
     })
     this.setData({
       bigTypeList,

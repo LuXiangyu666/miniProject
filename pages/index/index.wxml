@@ -40,7 +40,7 @@
     <view class="bigTypeRow">
       <navigator 
         bindtap="handleTypeJump"
-        data-index = "{{index+5}}"
+        data-index = "{{index+3}}"
         wx:for="{{bigTypeList_row2}}"
         wx:for-item="bigType"
         wx:key="id">

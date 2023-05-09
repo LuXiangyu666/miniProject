@@ -13,7 +13,7 @@ Page({
     baseUrl: '',
     orderId:'',
     productList: [],
-    productState: ['', '审核中', '已上架', '未发货', '已发货', '已收货'],
+    productState: ['', '审核中', '已上架', '未发货', '已发货', '已收货','退货中','已退货'],
   },
 
   /**
@@ -30,6 +30,30 @@ Page({
       orderId:options.id,
     })
 
+  },
+
+  //退货
+  async handleTuiHuo(event){
+    let index = event.currentTarget.dataset.index;
+    if (this.data.productList[index].state == 5) {
+      let id = event.currentTarget.dataset.id;
+      const result = await requestUtil({
+        url: '/product/shouhuo',
+        method: "GET",
+        data: {id},
+      });
+      console.log(result);
+      //this.getProductList(this.data.productList[0].sellerId);
+      this.setData({
+        productList:[],
+      })
+      this.getProductList(this.data.orderId);
+      wx.showToast({
+        title: '已经发起退货',
+        icon: 'success',
+        duration: 800 //持续的时间
+      })
+    }
   },
 
   //收货

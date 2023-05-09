@@ -12,7 +12,7 @@ Page({
   data: {
     baseUrl: '',
     myProductList: [],
-    productState: ['审核未通过', '审核中', '已上架', '未发货', '已发货', '卖家已收货'],
+    productState: ['审核未通过', '审核中', '已上架', '未发货', '已发货', '卖家已收货','退货中','已退货'],
   },
 
   /**
@@ -29,11 +29,12 @@ Page({
   },
 
 
-  //发货
+
+  //发货和完成退货
   async handleFaHuo(event) {
     //console.log(event);
     let index = event.currentTarget.dataset.index;
-    if (this.data.myProductList[index].state == 3) {
+    if (this.data.myProductList[index].state == 3 || this.data.myProductList[index].state == 6) {
       let id = event.currentTarget.dataset.id;
       const result = await requestUtil({
         url: '/product/fahuo',
@@ -43,7 +44,7 @@ Page({
       console.log(result);
       this.getMyProductList(this.data.myProductList[0].sellerId);
       wx.showToast({
-        title: '发货成功',
+        title: '操作成功',
         icon: 'success',
         duration: 500 //持续的时间
       })
