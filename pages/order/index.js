@@ -19,7 +19,7 @@ Page({
       },
       {
         id:1,
-        value:"待付款",
+        value:"待发货",
         isActive:false
       },
       {
@@ -29,7 +29,7 @@ Page({
       },
       {
         id:3,
-        value:"退款/退货",
+        value:"退货",
         isActive:false
       },
     ]
@@ -65,7 +65,7 @@ Page({
     // 切换标题
     this.changeTitleByIndex(index);
     // 获取订单列表
-    this.QueryParams.type=index;
+    this.QueryParams.type=index+1;
     this.QueryParams.page=1;
     this.setData({
       orders:[]

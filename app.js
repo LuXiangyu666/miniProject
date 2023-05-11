@@ -26,5 +26,9 @@ App({
 
   globalData: {
     index:-1,
+    complaintInfo:{
+      sellerId:'',
+      productId:''
+    }
   }
 })

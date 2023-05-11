@@ -78,6 +78,27 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/complaint/index",
+          "query": "id=37&sellerId=6",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/order_detail/index",
+          "query": "id=173",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/complaint/index",
+          "query": "id=43&sellerId=6",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

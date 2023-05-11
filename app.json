@@ -11,7 +11,8 @@
     "pages/order/index",
     "pages/myproduct/index",
     "pages/revise_product/index",
-    "pages/order_detail/index"
+    "pages/order_detail/index",
+    "pages/complaint/index"
 
   ],
   "requiredPrivateInfos":[

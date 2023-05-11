@@ -1,0 +1,55 @@
+<view class="pdMessage">
+  <!-- 商品图片 开始 -->
+  <navigator class="cart_image_warp" url="/pages/product_detail/index?id={{productId}}">
+    <image mode="widthFix" src="{{baseUrl+'/image/product/'+productObj.proPic}}"></image>
+  </navigator>
+  <!-- 商品图片 结束 -->
+
+  <!-- 商品信息 开始 -->
+  <view class="cart_info_warp">
+    <view class="content">
+      <navigator url="/pages/product_detail/index?id={{productId}}">
+        <view class="goods_name">{{productObj.name}}</view>
+      </navigator>
+      <view class="goods_price">¥{{productObj.price}}</view>
+    </view>
+    <view class="goods_description">
+      {{productObj.description}}
+    </view>
+  </view>
+</view>
+<!-- 商品信息 结束 -->
+
+
+<!-- 投诉输入框开始 -->
+<view class="describe">
+  <textarea placeholder="输入投诉的理由..." placeholder-class="placeholder" bindinput="descriptionBind" auto-focus maxlength="200" />
+</view>
+<!-- 投诉输入框结束 -->
+
+
+<!-- 上传图片开始 -->
+<!-- <button class="btn" bindtap="formSubmit">上传发布</button> -->
+<!-- <button class="btn" bindtap="upimg">选择图片</button> -->
+<button class="btn" bindtap="chooseImage">选择图片</button>
+<view class="logoinfo">
+  <block wx:for="{{url}}">
+    <image src="{{item}}"></image>
+  </block>
+</view>
+<!-- 上传图片结束 -->
+
+
+<!-- 发布按钮开始 -->
+<view class="btm">
+<view class="btm2">
+  <view class="publish">
+    <!-- <navigator url="/pages/product_detail/index?id={{productId}}"> -->
+      <view bindtap="handleComplaint">发布</view>
+    <!-- </navigator> -->
+  </view>
+</view>
+  
+</view>
+
+<!-- 发布按钮结束 -->

@@ -4,16 +4,22 @@
     <view class="product_title">商品列表</view>
     <view class="product_list">
       <view class="product_detail" wx:for="{{productList}}" wx:for-item="myProduct" wx:key="index">
-        <navigator url="/pages/product_detail/index?id={{myProduct.id}}">
+        <navigator class="n_img" url="/pages/product_detail/index?id={{myProduct.id}}">
           <image mode="widthFix" src="{{baseUrl+'/image/product/'+myProduct.proPic}}"></image>
           <view class="msg">
             <view class="product_name">{{myProduct.name}}</view>
             <view class="product_price"> ¥ {{myProduct.price}}</view>
           </view>
         </navigator>
-        <button size="mini" type="warn" data-id="{{myProduct.id}}" data-index="{{index}}" bindtap="handleShouHuo" >{{productState[myProduct.state]}}</button>
-        <button size="mini" type="warn" wx:if="{{myProduct.state===5}}" 
-        data-id="{{myProduct.id}}" data-index="{{index}}" bindtap="handleTuiHuo">退货</button>
+        <view class="button">
+          <button class="btn_state" size="mini" type="warn" data-id="{{myProduct.id}}" data-index="{{index}}" bindtap="handleShouHuo">{{productState[myProduct.state]}}</button>
+          <button size="mini" type="warn" wx:if="{{myProduct.state===5}}" data-id="{{myProduct.id}}" data-index="{{index}}" bindtap="handleTuiHuo">退货</button>
+          <navigator class="n_tousu" wx:if="{{myProduct.state===7}}"
+          url="/pages/complaint/index?id={{myProduct.id}}&sellerId={{myProduct.sellerId}}">
+            <button size="mini" type="warn"  data-id="{{myProduct.id}}" data-index="{{index}}">投诉</button>
+          </navigator>
+        </view>
+
       </view>
     </view>
   </view>

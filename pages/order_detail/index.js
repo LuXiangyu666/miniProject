@@ -16,6 +16,9 @@ Page({
     productState: ['', '审核中', '已上架', '未发货', '已发货', '已收货','退货中','已退货'],
   },
 
+  
+ 
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -32,6 +35,20 @@ Page({
 
   },
 
+  //投诉按钮点击事件，跳转到投诉页面
+  // async handleTousu(event){
+  //   console.log(event);
+  //   let index = event.currentTarget.dataset.index;
+  //   let id = event.currentTarget.dataset.id;
+  //   var complaintInfo = getApp().globalData.complaintInfo;
+  //   complaintInfo.sellerId = this.data.productList[index].sellerId;
+  //   complaintInfo.productId = id;
+  //   getApp().globalData.complaintInfo = complaintInfo;
+  //   console.log(getApp().globalData.complaintInfo);
+  //   wx.switchTab({
+  //     url: '/pages/complaint/index'
+  //   })
+  // },
   //退货
   async handleTuiHuo(event){
     let index = event.currentTarget.dataset.index;
