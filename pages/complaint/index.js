@@ -21,6 +21,7 @@ Page({
     content:'',
     img_arr:[],
     url: [],
+    state:['投诉未通过','投诉中','投诉成功']
   },
 
   /**
@@ -63,7 +64,6 @@ Page({
       data: complaintParam
     });
     console.log(res);
-   
     //发布投诉成功
     //跳转到订单页面
     wx.redirectTo({

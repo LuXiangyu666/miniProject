@@ -88,10 +88,12 @@ Page({
     console.log(result);
     const token = result.token;
     const user_id = result.id;
+    const user_score = result.score;
     if (result.code === 0) {
       //存储token到缓存
       wx.setStorageSync('token', token);
       wx.setStorageSync('user_id', user_id);
+      wx.setStorageSync('user_score', user_score);
       this.setData({
         user_id
       })

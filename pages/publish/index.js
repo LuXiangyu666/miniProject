@@ -148,6 +148,15 @@ Page({
   //处理创建商品
   async handleCreateProduct() {
     const token = wx.getStorageSync('token');
+    const user_score = wx.getStorageSync('user_score');
+    if(user_score<90){
+      wx.showToast({
+        title: '您的信用分过低',
+        icon: 'error',
+        mask: true,
+      })
+      return ;
+    }
     if (!token) {
       let p2 = this.getAjax2();
       Promise.all([getWxLogin(), p2]).then((res) => {

@@ -84,17 +84,6 @@ Page({
 
   //处理订单支付
   async handleOrderPay() {
-    // wx.login({
-    //   timeout:5000,
-    //   success: (res) => {
-    //     console.log(res.code);
-    //   },
-    // })
-    // let res = await getWxLogin();
-    // console.log(res.code);
-    // console.log(this.data.avatarUrl);
-    // console.log(this.data.nickName);
-
     const token = wx.getStorageSync('token');
     if (!token) {
       let p2 = this.getAjax2();

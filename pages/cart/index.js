@@ -98,6 +98,15 @@ Page({
 
   //点击结算
   handlePay(){
+    const user_score = wx.getStorageSync('user_score');
+    if(user_score<80){
+      wx.showToast({
+        title: '您的信用分过低',
+        icon: 'error',
+        mask: true,
+      })
+      return ;
+    }
     const {totalNum,address} = this.data;
     if(!address){
       wx.showToast({
