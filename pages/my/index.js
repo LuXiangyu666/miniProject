@@ -23,6 +23,7 @@ Page({
     user_id:'',    //用户id
     img:[],
     token:'',
+    stu_id:'',
   },
 
   /**
@@ -45,6 +46,7 @@ Page({
 
 
 
+
   async handleOrderPay() {
     const token = wx.getStorageSync('token');
     if (!token) {
@@ -53,11 +55,14 @@ Page({
         console.log("code是  " + res[0].code);
         console.log("头像地址  " + res[1][0]);
         console.log("昵称  " + res[1][1]);
+        let stu_id = this.data.stu_id;
+        console.log("stu_id是"+stu_id);
         let loginParam = {
           code: res[0].code,
           nickName: res[1][1],
           avatarUrl: res[1][0],
-          wxuserImg:this.data.img
+          wxuserImg:this.data.img,
+          stu_id:this.data.stu_id,
         }
         console.log("loginParam="+loginParam);
         wx.setStorageSync('userInfo', res[1]);
@@ -86,6 +91,33 @@ Page({
       method: "post"
     })
     console.log(result);
+    if(result.result==1){
+      wx.showModal({
+        title: '提示',
+        content: '学号认证通过！',
+        success: function (res) {
+          if (res.confirm) {//这里是点击了确定以后
+            console.log('用户点击确定')
+          } else {//这里是点击了取消以后
+            console.log('用户点击取消')
+          }
+        }
+      })
+    }
+    else if(result.result==0){
+      wx.showModal({
+        title: '提示',
+        content: '学号不存在！',
+        success: function (res) {
+          if (res.confirm) {//这里是点击了确定以后
+            console.log('用户点击确定')
+          } else {//这里是点击了取消以后
+            console.log('用户点击取消')
+          }
+        }
+      })
+    }
+    
     const token = result.token;
     const user_id = result.id;
     const user_score = result.score;
@@ -128,11 +160,13 @@ Page({
 
   //将用户名载入页面数据
   formSubmit(e) {
-    //console.log('昵称：',e.detail.value.nickname)
-    const nickName = e.detail.value.nickname
+    console.log('e：',e)
+    const nickName = e.detail.value.nickname;
+    const stu_id = e.detail.value.stu_id;
     //console.log(nickName);
     this.setData({
-      nickName
+      nickName,
+      stu_id
     })
   },
 

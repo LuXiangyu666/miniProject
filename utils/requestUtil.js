@@ -57,10 +57,10 @@ export const requestUtil = (params) => {
   var start = new Date().getTime();
   //console.log(start);
   ajaxTimes++; //每次请求时，ajaxTimes加一
-  wx.showLoading({
-    title: '加载中',
-    mask: true,
-  })
+  // wx.showLoading({
+  //   title: '加载中',
+  //   mask: true,
+  // })
 
   //模拟网络延迟加载
   while (true) {

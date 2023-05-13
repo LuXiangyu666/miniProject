@@ -8,6 +8,7 @@
 
       <form catchsubmit="formSubmit" class="form">
         <input type="nickname" class="userName" name="nickname" placeholder="{{nickName}}" placeholder-class="placeholder" />
+        <input type="stu_id" class="userName" name="stu_id" placeholder="请输入你的学号" placeholder-class="placeholder" wx:if="{{!token}}"/>
         <block wx:if="{{token == ''}}">
           <button form-type="submit" class="setName">保存昵称</button>
           <button form-type="submit" class="setName" bindtap="handleOrderPay">确认登录</button>
