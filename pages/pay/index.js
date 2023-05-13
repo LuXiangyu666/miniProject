@@ -127,18 +127,12 @@ Page({
 
   //创建订单
   async createOrder() {
-    const totalPrice = this.data.totalPrice;
+    //const totalPrice = this.data.totalPrice;
     const address = this.data.address.provinceName + this.data.address.cityName + this.data.address.countyName + this.data.address.detailInfo;
     const consignee = this.data.address.userName;
     const telNumber = this.data.address.telNumber;
     let goods = [];
-    this.data.cart.forEach(v => goods.push({
-      goodsId: v.id,
-      goodsNumber: v.num,
-      goodsPrice: v.price,
-      goodsName: v.name,
-      goodsPic: v.proPic
-    }))
+    //修改各个商品状态
     this.data.cart.forEach(async function(item){
       let id = item.id;
       const result = await requestUtil({
@@ -148,23 +142,62 @@ Page({
       });
       console.log(result);
     })
-    const orderParam = {
-      totalPrice,
-      address,
-      consignee,
-      telNumber,
-      goods
-    }
-    const res = await requestUtil({
-      url: "/my/order/create",
-      method: "POST",
-      data: orderParam
-    });
-    console.log("orderNo=" + res.orderNo);
+
+    //依次将购物车中的商品生成各自的订单
+    this.data.cart.forEach(async function(v){
+      let goods=[];
+      goods.push({
+        goodsId: v.id,
+        goodsNumber: v.num,
+        goodsPrice: v.price,
+        goodsName: v.name,
+        goodsPic: v.proPic
+      })
+      console.log(goods);
+      const orderParam = {
+        totalPrice:v.num*v.price,
+        address,
+        consignee,
+        telNumber,
+        goods
+      }
+      const res = await requestUtil({
+        url: "/my/order/create",
+        method: "POST",
+        data: orderParam
+      });
+      console.log("orderNo=" + res.orderNo);
     //跳转到新创建的订单页
     wx.redirectTo({
       url: "/pages/order/index?type=0",
     })
+    })
+
+    // this.data.cart.forEach(v => goods.push({
+    //   goodsId: v.id,
+    //   goodsNumber: v.num,
+    //   goodsPrice: v.price,
+    //   goodsName: v.name,
+    //   goodsPic: v.proPic
+    // }))
+  
+    // const orderParam = {
+    //   totalPrice,
+    //   address,
+    //   consignee,
+    //   telNumber,
+    //   goods
+    // }
+    // const res = await requestUtil({
+    //   url: "/my/order/create",
+    //   method: "POST",
+    //   data: orderParam
+    // });
+    // console.log("orderNo=" + res.orderNo);
+    // //跳转到新创建的订单页
+    // wx.redirectTo({
+    //   url: "/pages/order/index?type=0",
+    // })
   },
 
   /**
