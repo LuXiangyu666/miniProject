@@ -1,9 +1,9 @@
 //定义请求根路径baseUrl
 //还要更改upload.js文件里上传图片的路径
-//还要更改my页面中js文件里112行上传用户头像的路径
+//还要更改my页面中js文件里146行上传用户头像的路径
 const baseUrl ="http://localhost:8080";         
 // const baseUrl = "http://10.12.31.19:8080"; //BUU
-// const baseUrl ="http://192.168.43.163:8080";      //手机wifi
+//const baseUrl ="http://192.168.43.163:8080";      //手机wifi
 //const baseUrl ="http://192.168.16.122:8080";       //晶晶哥家
 //同时并发请求的次数
 let ajaxTimes = 0;
